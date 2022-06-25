@@ -34,9 +34,9 @@ public class ArrayList<T> {
     
     private void addAtIndex(int index, T data){
         if (index < 0 || index > size) {
-            throw new IndexOutOfBoundsException();
+            throw new IndexOutOfBoundsException("Error: index out of bounds");
         } else if(data == null) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Error: invalid arg");
         } else {
             if(size + 1 > backingArray.length) {
                 T[] tempArray = backingArray;
@@ -87,8 +87,10 @@ public class ArrayList<T> {
     }
 
     private T removeAtIndex (int index) {
-        if (index < 0 || index > size) {
-            throw new IndexOutOfBoundsException();    
+        if(size == 0){
+            throw new NoSuchElementException("Error: list is empty");
+        }else if (index < 0 || index > size) {
+            throw new IndexOutOfBoundsException("Error: index out of bounds");    
         } else {
             // remove from the back
             if (index == size - 1){
