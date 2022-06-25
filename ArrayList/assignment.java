@@ -89,7 +89,7 @@ public class ArrayList<T> {
     private T removeAtIndex (int index) {
         if(size == 0){
             throw new NoSuchElementException("Error: list is empty");
-        }else if (index < 0 || index > size) {
+        }else if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Error: index out of bounds");    
         } else {
             // remove from the back
