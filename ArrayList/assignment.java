@@ -31,11 +31,16 @@ public class ArrayList<T> {
     }
     
     private void addAtIndex(int index, T data){
+        // invalid index input
         if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException("Error: index is out of bounds");
-        } else if(data == null) {
+        } else if (data == null) {
             throw new IllegalArgumentException("Error: data is null");
         } else {
+            
+            // if incoming data overflows the current length of the backingArray, we
+            // increase the size of the array by the prevailing length, and copy
+            // the existing data into the new array list
             if(size + 1 > backingArray.length) {
                 T[] tempArray = backingArray;
                 backingArray = (T[]) new Object[backingArray.length * 2];
@@ -44,19 +49,17 @@ public class ArrayList<T> {
                 }
             }
             
+            // we then check where the addition is at:
+            // add from the front:
             if(index == 0) {
                 for(int i = size; i > 0; i--){
                     backingArray[i] = backingArray[i-1];
                 }
                 backingArray[0] = data;
             } else if (index == size){
+                // mutate any position
                 backingArray[size] = data;
-            } else {
-                for (int i = size; i > index; i--) {
-                    backingArray[i] = backingArray[i - 1];
-                }
-                backingArray[index] = data;
-            }
+            } 
             size++;
         }
     }
