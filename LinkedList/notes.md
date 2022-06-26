@@ -94,3 +94,68 @@ public class SinglyLinkedList <T> {
   }
 }
 ```
+
+## Iterable in LinkedLists
+```java
+import java.util.Iterator
+
+public class LinkedList<T> implements Iterable<T> {
+  // same as previous
+  public Iterator<T> iterator() {
+    return new LLIterator<>();
+  }
+  
+  private class LLIterator implements Iterator<T> {
+    private Node<T> curr;
+    LLIterator() { current = head; }
+    public boolean hasNext() { return curr!=null;}
+    public T next() {
+      if (hasNext()) {
+        T temp = curr.data;
+        curr = curr.next;
+        return temp;
+       }
+       return null;
+    }
+  }
+}
+```
+
+```
+LinkedList<String> courses = new LinkedList<>();
+// populate list
+
+Iterator<String> courseIterator = courses.iterator();
+while(courseIterator.hasNext()) {
+  String data = courseIterator.next();
+  // do anything you want with the data here
+}
+```
+
+## Recursion in LinkedLists
+
+Problem: Given internal access to a SLL with comparable data, where all of the data is guaranteed to be in sorted order, remove all duplicates from the list so that there is at most one of each data. This task should be done in O(n) time and O(1) space.
+
+```java
+// assuming a sorted linkedlist
+  public void removeDuplicates() {
+    head = rRemove(head);
+  }
+  
+  private Node<T> rRemove(Node<T> curr){
+    // terminating condition when pointer reaches the end of the LL
+    if (curr == null){
+      return null;
+    }
+    
+    curr.next = rRemove(curr.next);
+    
+    // if not the end and is duplicate
+    // use compareTo rather than equals since it's a Comparable implementation
+    if (curr.next != null && curr.data.compareTo(curr.next.data) {
+      return curr.next;
+    }
+    
+    return curr;
+  }
+```
