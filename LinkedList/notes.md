@@ -136,6 +136,10 @@ while(courseIterator.hasNext()) {
 
 Problem: Given internal access to a SLL with comparable data, where all of the data is guaranteed to be in sorted order, remove all duplicates from the list so that there is at most one of each data. This task should be done in O(n) time and O(1) space.
 
+Note: this is a step-wise reduction of the original linked list
+
+<img src="./recursion.jpg" alt="Overview of the recursive function" />
+
 ```java
 // assuming a sorted linkedlist
   public void removeDuplicates() {
