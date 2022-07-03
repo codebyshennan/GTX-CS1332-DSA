@@ -157,9 +157,16 @@ Note: this is a step-wise reduction of the original linked list
     // if not the end and is duplicate
     // use compareTo rather than equals since it's a Comparable implementation
     if (curr.next != null && curr.data.compareTo(curr.next.data) {
+
+      // if we want to remove the current node, what we can do is to remove the node after it, as in this case
       return curr.next;
+
+      // this effecivetly skips the node when we relink the list
     }
     
+    // if not, we can just return the node itself to relink the link that was already there
     return curr;
   }
 ```
+
+The idea of using the return field to restructure and relink nodes is a concept called **pointer reinforcement**, basically when nothing changes in the structure, the code simply 'reinforces' the link that was already there.
