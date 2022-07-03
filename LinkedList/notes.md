@@ -156,7 +156,7 @@ Note: this is a step-wise reduction of the original linked list
     
     // if not the end and is duplicate
     // use compareTo rather than equals since it's a Comparable implementation
-    if (curr.next != null && curr.data.compareTo(curr.next.data) {
+    if (curr.next != null && curr.data.compareTo(curr.next.data)) {
 
       // if we want to remove the current node, what we can do is to remove the node after it, as in this case
       return curr.next;
@@ -170,3 +170,9 @@ Note: this is a step-wise reduction of the original linked list
 ```
 
 The idea of using the return field to restructure and relink nodes is a concept called **pointer reinforcement**, basically when nothing changes in the structure, the code simply 'reinforces' the link that was already there.
+
+Notes:
+- The technique makes use of the `return` field to help restructure the list.
+- It separates the responsibility of deciding the next node and setting the next node to different recursive calls.
+- The information that is returned is different based on which case of removing duplicates we're in.
+- It serves no purpose if the structure of the list does not change.
