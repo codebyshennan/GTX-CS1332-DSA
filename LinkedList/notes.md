@@ -138,7 +138,7 @@ Problem: Given internal access to a SLL with comparable data, where all of the d
 
 Note: this is a step-wise reduction of the original linked list
 
-<img src="./recursion.jpg" alt="Overview of the recursive function" />
+<img src="./recursion.png" alt="Overview of the recursive function" />
 
 ```java
 // assuming a sorted linkedlist
